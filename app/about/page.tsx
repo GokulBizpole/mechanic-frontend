@@ -22,10 +22,10 @@ export default function AboutPage() {
 
   return (
     <div>
-      <section className="bg-gradient-to-br from-primary-900 to-primary-700 text-white py-16">
+      <section className="bg-gray-50 border-b border-gray-200 py-16">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl font-extrabold mb-4">{t.about.title}</h1>
-          <p className="text-blue-200 text-lg">{t.about.subtitle}</p>
+          <h1 className="text-4xl font-extrabold text-gray-900 mb-4">{t.about.title}</h1>
+          <p className="text-gray-500 text-lg">{t.about.subtitle}</p>
         </div>
       </section>
 
@@ -100,14 +100,14 @@ export default function AboutPage() {
                 ))}
               </div>
             </div>
-            <div className="bg-primary-800 text-white rounded-2xl p-8">
-              <h3 className="text-2xl font-bold mb-4">
+            <div className="bg-amber-50 border border-amber-200 rounded-2xl p-8">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">
                 {lang === 'ta' ? 'சேவை பதிவு செய்ய தயாரா?' : 'Ready to Book a Service?'}
               </h3>
-              <p className="text-blue-200 mb-6">
+              <p className="text-gray-500 mb-6">
                 {lang === 'ta' ? 'இப்போதே பதிவு செய்யுங்கள் - விரைவான சேவை உத்தரவாதம்' : 'Book now and get same-day service guaranteed'}
               </p>
-              <Link href="/booking" className="inline-flex items-center gap-2 bg-accent-500 hover:bg-accent-600 text-white font-semibold px-6 py-3 rounded-lg transition-colors">
+              <Link href="/booking" className="btn-primary">
                 {lang === 'ta' ? 'இப்போது பதிவு செய்க' : 'Book a Service'}
                 <ArrowRight className="w-5 h-5" />
               </Link>

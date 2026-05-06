@@ -24,14 +24,19 @@ export default function Navbar() {
   if (isAdmin) return null;
 
   return (
-    <nav className="bg-primary-800 text-white shadow-lg sticky top-0 z-50">
+    <nav className="bg-white border-b border-gray-200 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <Link href="/" className="flex items-center gap-2 font-bold text-xl">
-            <Wrench className="w-6 h-6 text-accent-400" />
-            <span>A S <span className="text-accent-400">SERVICE</span></span>
+
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-2 font-bold text-xl text-gray-900">
+            <div className="w-8 h-8 bg-amber-500 rounded-lg flex items-center justify-center">
+              <Wrench className="w-4 h-4 text-white" />
+            </div>
+            A S <span className="text-amber-500">SERVICE</span>
           </Link>
 
+          {/* Desktop links */}
           <div className="hidden lg:flex items-center gap-1">
             {links.map(l => (
               <Link
@@ -40,8 +45,8 @@ export default function Navbar() {
                 className={clsx(
                   'px-3 py-2 rounded-md text-sm font-medium transition-colors',
                   pathname === l.href
-                    ? 'bg-primary-700 text-white'
-                    : 'text-blue-100 hover:bg-primary-700 hover:text-white'
+                    ? 'bg-gray-100 text-gray-900'
+                    : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
                 )}
               >
                 {l.label}
@@ -49,24 +54,25 @@ export default function Navbar() {
             ))}
           </div>
 
+          {/* Right controls */}
           <div className="flex items-center gap-3">
             <button
               onClick={toggleLanguage}
-              className="hidden sm:flex items-center gap-1 bg-primary-700 hover:bg-primary-600 px-3 py-1.5 rounded-full text-sm font-semibold transition-colors"
+              className="hidden sm:flex items-center gap-1 border border-gray-200 hover:bg-gray-50 px-3 py-1.5 rounded-full text-sm font-semibold transition-colors text-gray-700"
             >
-              <span className={lang === 'en' ? 'text-accent-400' : 'text-blue-300'}>EN</span>
-              <span className="text-blue-300">|</span>
-              <span className={lang === 'ta' ? 'text-accent-400' : 'text-blue-300'}>தமிழ்</span>
+              <span className={lang === 'en' ? 'text-amber-600 font-bold' : 'text-gray-400'}>EN</span>
+              <span className="text-gray-300">|</span>
+              <span className={lang === 'ta' ? 'text-amber-600 font-bold' : 'text-gray-400'}>தமிழ்</span>
             </button>
             <Link
               href="/booking"
-              className="hidden sm:inline-flex bg-accent-500 hover:bg-accent-600 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors"
+              className="hidden sm:inline-flex bg-amber-500 hover:bg-amber-600 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors"
             >
               {t.nav.booking}
             </Link>
             <button
               onClick={() => setOpen(!open)}
-              className="lg:hidden p-2 rounded-md hover:bg-primary-700"
+              className="lg:hidden p-2 rounded-md text-gray-600 hover:bg-gray-100"
             >
               {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -74,8 +80,9 @@ export default function Navbar() {
         </div>
       </div>
 
+      {/* Mobile menu */}
       {open && (
-        <div className="lg:hidden bg-primary-900 px-4 pb-4 pt-2 space-y-1">
+        <div className="lg:hidden bg-white border-t border-gray-200 px-4 pb-4 pt-2 space-y-1">
           {links.map(l => (
             <Link
               key={l.href}
@@ -83,7 +90,9 @@ export default function Navbar() {
               onClick={() => setOpen(false)}
               className={clsx(
                 'block px-3 py-2 rounded-md text-sm font-medium',
-                pathname === l.href ? 'bg-primary-700 text-white' : 'text-blue-100 hover:bg-primary-700'
+                pathname === l.href
+                  ? 'bg-gray-100 text-gray-900'
+                  : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
               )}
             >
               {l.label}
@@ -91,7 +100,7 @@ export default function Navbar() {
           ))}
           <button
             onClick={toggleLanguage}
-            className="w-full text-left px-3 py-2 text-sm text-blue-100 hover:bg-primary-700 rounded-md"
+            className="w-full text-left px-3 py-2 text-sm text-gray-600 hover:bg-gray-100 rounded-md"
           >
             {lang === 'en' ? '🇮🇳 Switch to தமிழ்' : '🇬🇧 Switch to English'}
           </button>

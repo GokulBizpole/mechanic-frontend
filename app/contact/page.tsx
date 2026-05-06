@@ -38,10 +38,10 @@ export default function ContactPage() {
 
   return (
     <div>
-      <section className="bg-gradient-to-br from-primary-800 to-primary-700 text-white py-16">
+      <section className="bg-gray-50 border-b border-gray-200 py-16">
         <div className="max-w-7xl mx-auto px-4 text-center">
-          <h1 className="text-4xl font-extrabold mb-4">{t.contact.title}</h1>
-          <p className="text-blue-200 text-lg">{t.contact.subtitle}</p>
+          <h1 className="text-4xl font-extrabold text-gray-900 mb-4">{t.contact.title}</h1>
+          <p className="text-gray-500 text-lg">{t.contact.subtitle}</p>
         </div>
       </section>
 

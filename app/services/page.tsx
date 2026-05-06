@@ -1,6 +1,5 @@
 'use client';
 import { useEffect, useState } from 'react';
-import type { Metadata } from 'next';
 import { useLanguage } from '@/lib/LanguageContext';
 import { getServices } from '@/lib/api';
 import ServiceCard from '@/components/ServiceCard';
@@ -20,15 +19,15 @@ export default function ServicesPage() {
 
   return (
     <div>
-      <section className="bg-gradient-to-br from-primary-800 to-primary-700 text-white py-16">
+      <section className="bg-gray-50 border-b border-gray-200 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="flex justify-center mb-4">
-            <div className="w-14 h-14 bg-accent-500 rounded-2xl flex items-center justify-center">
+            <div className="w-14 h-14 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center">
               <Wrench className="w-7 h-7" />
             </div>
           </div>
-          <h1 className="text-4xl font-extrabold mb-4">{t.services.title}</h1>
-          <p className="text-blue-200 text-lg max-w-2xl mx-auto">{t.services.subtitle}</p>
+          <h1 className="text-4xl font-extrabold text-gray-900 mb-4">{t.services.title}</h1>
+          <p className="text-gray-500 text-lg max-w-2xl mx-auto">{t.services.subtitle}</p>
         </div>
       </section>
 
