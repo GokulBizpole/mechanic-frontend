@@ -78,6 +78,23 @@ function BookingForm() {
     }
   };
 
+  const handleWhatsAppBooking = () => {
+  const phoneNumber = '9025649921'; 
+  const message =
+`Hi, I would like to book a service.
+
+Service: ${selectedService ? (lang === 'ta' ? selectedService.name_ta : selectedService.name_en) : ''}
+Name: ${form.customer_name}
+Phone: ${form.customer_phone}
+Address: ${form.customer_address}
+Brand: ${form.appliance_brand || '-'}
+Date: ${form.preferred_date}
+Time: ${form.preferred_time_slot}`;
+
+  const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+  window.open(url, '_blank');
+};
+
   const selectedService = services.find(s => s.id === parseInt(form.service_id));
   const steps = [t.booking.step1, t.booking.step2, t.booking.step3, t.booking.step4];
 
@@ -264,10 +281,23 @@ function BookingForm() {
             <ChevronRight className="w-5 h-5" />
           </button>
         ) : (
-          <button onClick={submit} disabled={loading} className="btn-primary">
-            {loading ? t.common.loading : t.booking.confirm}
-            {!loading && <CheckCircle className="w-5 h-5" />}
-          </button>
+          <div className="flex gap-3">
+            <button
+              onClick={handleWhatsAppBooking}
+              className="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-5 py-3 rounded-xl font-medium transition-colors"
+            >
+              {/* WhatsApp icon */}
+              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2.05 22l5.25-1.38a9.85 9.85 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2m0 1.67c2.2 0 4.27.86 5.82 2.42a8.2 8.2 0 0 1 2.42 5.82c0 4.54-3.7 8.23-8.24 8.23a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.18 8.18 0 0 1-1.25-4.37c0-4.54 3.7-8.24 8.23-8.24m-4.52 4.7c-.16 0-.42.06-.64.31-.22.25-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.67 2.55 4.04 3.58 2.38 1.03 2.38.69 2.81.65.43-.04 1.39-.57 1.59-1.12.2-.55.2-1.02.14-1.12-.06-.1-.22-.16-.46-.28-.24-.12-1.39-.69-1.61-.77-.22-.08-.37-.12-.53.12-.16.24-.61.77-.74.93-.14.16-.27.18-.51.06-.24-.12-1.01-.37-1.93-1.19a7.27 7.27 0 0 1-1.34-1.67c-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.43.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.43-.06-.12-.53-1.29-.74-1.76-.19-.46-.39-.4-.53-.41z" />
+              </svg>
+              Book via WhatsApp
+            </button>
+
+            <button onClick={submit} disabled={loading} className="btn-primary">
+              {loading ? t.common.loading : t.booking.confirm}
+              {!loading && <CheckCircle className="w-5 h-5" />}
+            </button>
+          </div>
         )}
       </div>
     </div>

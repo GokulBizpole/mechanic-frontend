@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { Menu, X, Wrench } from 'lucide-react';
 import { useLanguage } from '@/lib/LanguageContext';
 import clsx from 'clsx';
+import Image from "next/image";
 
 export default function Navbar() {
   const { t, lang, toggleLanguage } = useLanguage();
@@ -29,12 +30,19 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
 
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 font-bold text-xl text-gray-900">
-            <div className="w-8 h-8 bg-amber-500 rounded-lg flex items-center justify-center">
-              <Wrench className="w-4 h-4 text-white" />
-            </div>
-            A S <span className="text-amber-500">SERVICE</span>
-          </Link>
+   <Link href="/" className="flex items-center gap-2 font-bold text-xl text-gray-900">
+  <Image
+    src="/AS-engneering.png"
+    alt="AS Engineering logo"
+    width={40}
+    height={40}
+    className="rounded-md object-cover w-10 h-10 shadow-sm"
+  />
+  <span>
+    A S <span className="text-amber-500">SERVICE</span>
+  </span>
+</Link>
+
 
           {/* Desktop links */}
           <div className="hidden lg:flex items-center gap-1">
